@@ -10,80 +10,120 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
 background:#f5f7fa;
 color:#333;
+line-height:1.6;
 }
 
 header{
 background:#0f172a;
-color:white;
-padding:20px;
-text-align:center;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
 }
 
-header img{
-width:100px;
-height:100px;
+.logo-area{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-area img{
+width:60px;
+height:60px;
 border-radius:50%;
-margin-bottom:10px;
+object-fit:cover;
+}
+
+.logo-text h2{
+color:white;
+}
+
+.logo-text p{
+color:#cbd5e1;
+font-size:14px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#22c55e;
 }
 
 .hero{
-padding:60px 20px;
-text-align:center;
 background:linear-gradient(to right,#0f172a,#14532d);
 color:white;
+padding:90px 20px;
+text-align:center;
 }
 
 .hero h1{
-font-size:2.5rem;
-margin-bottom:15px;
+font-size:3rem;
+margin-bottom:20px;
 }
 
 .hero p{
-font-size:1.1rem;
-max-width:700px;
+max-width:800px;
 margin:auto;
+font-size:1.1rem;
+}
+
+.buttons{
+margin-top:30px;
 }
 
 .btn{
 display:inline-block;
-margin-top:25px;
 padding:12px 25px;
-background:#22c55e;
-color:white;
-text-decoration:none;
+margin:8px;
 border-radius:8px;
+text-decoration:none;
 font-weight:bold;
 }
 
-.section{
-padding:50px 20px;
-max-width:1100px;
-margin:auto;
+.btn-primary{
+background:#22c55e;
+color:white;
 }
 
-.section h2{
-text-align:center;
-margin-bottom:30px;
+.btn-secondary{
+background:white;
 color:#14532d;
 }
 
-.features{
+.section{
+padding:70px 5%;
+}
+
+.section-title{
+text-align:center;
+font-size:2rem;
+margin-bottom:40px;
+color:#14532d;
+}
+
+.cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
 .card{
 background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
+padding:25px;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
 .card h3{
@@ -91,12 +131,46 @@ margin-bottom:10px;
 color:#14532d;
 }
 
+.featured{
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.status{
+color:#16a34a;
+font-weight:bold;
+margin-top:15px;
+}
+
 footer{
 background:#0f172a;
 color:white;
 text-align:center;
 padding:20px;
-margin-top:40px;
+}
+
+@media(max-width:768px){
+header{
+flex-direction:column;
+text-align:center;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+display:block;
+margin:10px 0;
+}
+
+.hero h1{
+font-size:2rem;
+}
 }
 </style>
 </head>
@@ -104,94 +178,255 @@ margin-top:40px;
 <body>
 
 <header>
+
+<div class="logo-area">
 <img src="assets/logo.png" alt="Sir Mean Academy Logo">
-<h1>Sir Mean Academy</h1>
-<p>Learn. Practice. Grow.</p>
+
+<div class="logo-text">
+<h2>Sir Mean Academy</h2>
+<p>Learn • Practice • Grow</p>
+</div>
+
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="register.html">Apply</a>
+<a href="login.html">Student Login</a>
+</nav>
+
 </header>
 
 <section class="hero">
-<h1>Welcome to Sir Mean Academy</h1>
+
+<h1>Start Your Data Analytics Journey</h1>
 
 <p>
-Building practical digital skills through professional training in
-Microsoft Excel, SQL, Power BI, Python and Data Analytics.
+Sir Mean Academy provides practical digital skills training for students,
+researchers, job seekers and professionals.
 </p>
 
-<a href="register.html" class="btn">Apply Now</a>
+<div class="buttons">
+
+<a href="register.html" class="btn btn-primary">
+Apply Now
+</a>
+
+<a href="login.html" class="btn btn-secondary">
+Student Portal
+</a>
+
+</div>
+
 </section>
-
 <section class="section">
-<h2>Why Choose Sir Mean Academy?</h2>
 
-<div class="features">
+<h2 class="section-title">
+Why Choose Sir Mean Academy?
+</h2>
+
+<div class="cards">
 
 <div class="card">
-<h3>Professional Training</h3>
+<h3>Industry-Relevant Training</h3>
 <p>
-Structured courses designed for students,
-researchers, job seekers and professionals.
+Develop practical and in-demand digital skills through carefully structured training programs designed for students, researchers and professionals.
 </p>
 </div>
 
 <div class="card">
-<h3>Real World Practice</h3>
+<h3>Hands-On Learning</h3>
 <p>
-Work with datasets, projects and practical
-examples used in real environments.
+Gain real experience through practical exercises, datasets, projects and guided activities that reflect real-world applications.
+</p>
+</div>
+
+<div class="card">
+<h3>Professional Certification</h3>
+<p>
+Earn a Certificate of Completion that recognizes your effort and demonstrates your commitment to continuous learning.
+</p>
+</div>
+
+<div class="card">
+<h3>Flexible Online Learning</h3>
+<p>
+Learn conveniently from anywhere through live online classes, learning materials and dedicated support.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Featured Course
+</h2>
+
+<div class="featured">
+
+<div style="display:inline-block;background:#dcfce7;color:#166534;padding:8px 15px;border-radius:20px;font-weight:bold;margin-bottom:20px;">
+OPEN FOR REGISTRATION
+</div>
+
+<h2 style="color:#14532d;margin-bottom:15px;">
+Data Analysis with Microsoft Excel
+</h2>
+
+<p style="line-height:1.8;">
+Build a strong foundation in Data Analytics by mastering Microsoft Excel from Beginner to Intermediate level. This training focuses on practical skills that can be applied in academics, research and professional environments.
+</p>
+
+<br>
+
+<p style="line-height:2;">
+✔ Excel Fundamentals<br>
+✔ Data Cleaning & Preparation<br>
+✔ Formulas & Functions<br>
+✔ Pivot Tables & Reporting<br>
+✔ Charts & Data Visualization<br>
+✔ Practical Data Analysis Projects
+</p>
+
+<p class="status">
+Classes Starting Soon
+</p>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Upcoming Programs
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>SQL for Data Analysis</h3>
+<p>
+Learn how to retrieve, organize and analyze data efficiently using Structured Query Language (SQL).
+</p>
+</div>
+
+<div class="card">
+<h3>Power BI Fundamentals</h3>
+<p>
+Create professional dashboards and interactive business intelligence reports using Microsoft Power BI.
+</p>
+</div>
+
+<div class="card">
+<h3>Python for Data Analysis</h3>
+<p>
+Explore data analysis, automation and visualization using one of the world's most popular programming languages.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Included With Your Training
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Training Materials</h3>
+<p>
+Access structured learning materials and resources throughout your training period.
+</p>
+</div>
+
+<div class="card">
+<h3>Practice Datasets</h3>
+<p>
+Work with practical datasets designed to strengthen your analytical skills.
+</p>
+</div>
+
+<div class="card">
+<h3>Assessments & Examinations</h3>
+<p>
+Measure your progress through quizzes, assignments and online examinations.
 </p>
 </div>
 
 <div class="card">
 <h3>Certificate of Completion</h3>
 <p>
-Receive a professional certificate after
-successful completion of your training.
-</p>
-</div>
-
-<div class="card">
-<h3>Online Learning</h3>
-<p>
-Learn conveniently from anywhere through
-Google Meet and our learning portal.
+Receive a professional certificate after successfully completing the program requirements.
 </p>
 </div>
 
 </div>
+
 </section>
 
-<section class="section">
+<section style="background:#14532d;color:white;padding:80px 20px;text-align:center;">
 
-<h2>Available Courses</h2>
+<h2 style="margin-bottom:20px;">
+Meet Your Instructor
+</h2>
 
-<div class="features">
+<h3 style="font-size:28px;">
+Sir Mean
+</h3>
 
-<div class="card">
-<h3>Microsoft Excel</h3>
-<p>Beginner to Intermediate Data Analysis.</p>
-</div>
+<p style="margin-top:10px;">
+Statistics Student • Data Analyst
+</p>
 
-<div class="card">
-<h3>SQL</h3>
-<p>Learn database querying and reporting.</p>
-</div>
+<br>
 
-<div class="card">
-<h3>Power BI</h3>
-<p>Create interactive dashboards and reports.</p>
-</div>
+<p style="max-width:750px;margin:auto;line-height:1.8;">
+Passionate about helping learners develop practical skills in Microsoft Excel, Data Analytics and modern digital technologies through engaging and structured training.
+</p>
 
-<div class="card">
-<h3>Python</h3>
-<p>Data Analysis and Automation.</p>
-</div>
+</section>
 
-</div>
+<section style="padding:80px 20px;text-align:center;">
+
+<h2 style="color:#14532d;margin-bottom:20px;">
+Begin Your Learning Journey Today
+</h2>
+
+<p style="max-width:700px;margin:auto;">
+Take the first step toward building valuable analytical skills and advancing your academic or professional growth.
+</p>
+
+<br>
+
+<p>
+Live Online Classes via Google Meet
+</p>
+
+<p>
+WhatsApp: 09026869909
+</p>
+
+<br>
+
+<a href="register.html" class="btn btn-primary">
+Apply for Admission
+</a>
 
 </section>
 
 <footer>
-<p>© 2026 Sir Mean Academy. All Rights Reserved.</p>
+
+<p>
+© 2026 Sir Mean Academy. All Rights Reserved.
+</p>
+
 </footer>
 
 </body>
