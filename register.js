@@ -24,16 +24,10 @@ dateApplied: new Date().toISOString()
 
 try {
 await push(ref(db, "applications"), data);
-
-```
 alert("Application submitted successfully!");
-
 form.reset();
-```
-
 } catch (error) {
 console.error(error);
 alert("Error: " + error.message);
 }
-
 });
