@@ -52,6 +52,14 @@ onValue(ref(db, "applications"), (snapshot) => {
 
 window.approveApplication = async (id) => {
 
+    const allApps = await get(ref(db, "applications"));
+
+    let count = 0;
+
+    if (allApps.exists()) {
+        count = Object.keys(allApps.val()).length;
+    }
+
     const snap = await get(ref(db, "applications/" + id));
 
     if (!snap.exists()) {
@@ -73,7 +81,7 @@ window.approveApplication = async (id) => {
     }
 
     const regNumber =
-        prefix + "-" + Date.now().toString().slice(-5);
+        prefix + "-" + String(count).padStart(5, "0");
 
     await update(ref(db, "applications/" + id), {
         status: "Approved",
