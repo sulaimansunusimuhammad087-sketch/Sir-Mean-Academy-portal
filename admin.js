@@ -30,7 +30,7 @@ snapshot.forEach((child) => {
 
 const statCards = document.querySelectorAll(".stat-box p");
 
-if(statCards.length > 0){
+if (statCards.length > 0) {
     statCards[0].textContent = totalApplications;
 }
 ```
