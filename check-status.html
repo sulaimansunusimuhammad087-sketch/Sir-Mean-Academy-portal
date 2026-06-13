@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Registration Status | Sir Mean Academy</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f6f9;
+padding:30px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+color:#14532d;
+margin-bottom:10px;
+}
+
+p{
+text-align:center;
+color:#666;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#14532d;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#166534;
+}
+
+.result{
+margin-top:25px;
+padding:20px;
+background:#ecfdf5;
+border-radius:10px;
+display:none;
+}
+
+.result h2{
+color:#14532d;
+margin-bottom:15px;
+}
+
+.status{
+font-weight:bold;
+}
+
+.home{
+display:block;
+text-align:center;
+margin-top:20px;
+text-decoration:none;
+color:#14532d;
+font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Check Registration Status</h1>
+
+<p>
+Enter the phone number used during registration.
+</p>
+
+<input
+type="text"
+id="phone"
+placeholder="Enter Phone Number">
+
+<button onclick="checkStatus()">
+Check Status
+</button>
+
+<div class="result" id="result">
+
+<h2>Application Details</h2>
+
+<p><strong>Full Name:</strong> <span id="name"></span></p>
+
+<p><strong>Course:</strong> <span id="course"></span></p>
+
+<p><strong>Status:</strong> <span id="status"></span></p>
+
+<p><strong>Registration Number:</strong> <span id="regNumber"></span></p>
+
+<p id="message"></p>
+
+</div>
+
+<a href="index.html" class="home">
+← Back to Home
+</a>
+
+</div>
+
+<script type="module">
+
+import { db } from "./firebase-config.js";
+import {
+ref,
+get
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+window.checkStatus = async () => {
+
+const phone =
+document.getElementById("phone").value.trim();
+
+const snapshot =
+await get(ref(db,"applications"));
+
+if(!snapshot.exists()){
+alert("No applications found.");
+return;
+}
+
+let found = false;
+
+snapshot.forEach((child)=>{
+
+const data = child.val();
+
+if(data.phone === phone){
+
+found = true;
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("name").textContent =
+data.fullName || "";
+
+document.getElementById("course").textContent =
+data.course || "";
+
+document.getElementById("status").textContent =
+data.status || "Pending";
+
+document.getElementById("regNumber").textContent =
+data.regNumber || "Not Yet Assigned";
+
+if(data.status === "Approved"){
+
+document.getElementById("message").innerHTML =
+"🎉 Congratulations! Your application has been approved. Please keep your Registration Number safe and use it for future access to the Academy Portal.";
+
+}
+else if(data.status === "Rejected"){
+
+document.getElementById("message").innerHTML =
+"Unfortunately your application was not approved.";
+
+}
+else{
+
+document.getElementById("message").innerHTML =
+"Your application is currently under review. Please check again later.";
+
+}
+
+}
+
+});
+
+if(!found){
+alert("No application found with this phone number.");
+}
+
+};
+
+</script>
+
+</body>
+</html>
