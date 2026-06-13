@@ -1,4 +1,3 @@
-writing{variant="document" id="91584"}
 import { db } from "./firebase-config.js";
 import { ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
