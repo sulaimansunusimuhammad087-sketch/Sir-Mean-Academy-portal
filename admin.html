@@ -147,24 +147,8 @@ margin-top:10px;
 <h2>New Applications</h2>
 
 <table>
-
-<tr>
-<th>Application No</th>
-<th>Name</th>
-<th>Course</th>
-<th>Action</th>
-</tr>
-
-<tr>
-<td>APP-2026-001</td>
-<td>Aisha Ibrahim</td>
-<td>Excel</td>
-<td>
-<button class="btn approve">Approve</button>
-<button class="btn reject">Reject</button>
-</td>
-</tr>
-
+<thead> <tr> <th>Application ID</th> <th>Full Name</th> <th>Course</th> <th>Status</th> </tr> </thead>
+<tbody id="applicationsTable"> </tbody>
 </table>
 
 </div>
@@ -214,6 +198,7 @@ Certificate generation and verification will appear here.
 </div>
 
 </div>
+<script type="module" src="admin.js"></script>
 
 </body>
 </html>
