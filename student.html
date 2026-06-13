@@ -61,16 +61,29 @@ font-weight:bold;
 <div class="card">
 <h3>Student Information</h3>
 
-<p><strong>Name:</strong> Student Name</p>
-<p><strong>Application No:</strong> APP-2026-001</p>
-<p><strong>Registration No:</strong> Awaiting Approval</p>
-<p><strong>Course:</strong> Data Analysis with Microsoft Excel</p>
-<p><strong>Status:</strong> <span class="status">Awaiting Approval</span></p>
-</div>
+<p><strong>Name:</strong> <span id="studentName"></span></p>
 
-<div class="card">
-<h3>Learning Materials</h3>
-<p>No materials available yet.</p>
+<p><strong>Application ID:</strong>
+<span id="applicationId"></span></p>
+
+<p><strong>Registration No:</strong>
+<span id="regNumber"></span></p>
+
+<p><strong>Course:</strong>
+<span id="course"></span></p>
+
+<p><strong>Institution:</strong>
+<span id="institution"></span></p>
+
+<p><strong>Department:</strong>
+<span id="department"></span></p>
+
+<p><strong>Level:</strong>
+<span id="level"></span></p>
+
+<p><strong>Status:</strong>
+<span class="status" id="status"></span></p>
+
 </div>
 
 <div class="card">
@@ -90,5 +103,41 @@ font-weight:bold;
 
 </div>
 
+<script>
+
+const student =
+JSON.parse(localStorage.getItem("studentData"));
+
+if(!student){
+    alert("Please login first.");
+    window.location.href = "login.html";
+}
+
+document.getElementById("studentName").textContent =
+student.fullName || "";
+
+document.getElementById("applicationId").textContent =
+student.applicationId || "";
+
+document.getElementById("regNumber").textContent =
+student.regNumber || "Awaiting Approval";
+
+document.getElementById("course").textContent =
+student.course || "";
+
+document.getElementById("institution").textContent =
+student.institution || "";
+
+document.getElementById("department").textContent =
+student.department || "";
+
+document.getElementById("level").textContent =
+student.level || "";
+
+document.getElementById("status").textContent =
+student.status || "Pending";
+
+</script>
+  
 </body>
 </html>
