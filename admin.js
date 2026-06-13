@@ -1,3 +1,4 @@
+writing{variant="document" id="91584"}
 import { db } from "./firebase-config.js";
 import { ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
@@ -5,34 +6,32 @@ const table = document.getElementById("applicationsTable");
 
 onValue(ref(db, "applications"), (snapshot) => {
 
-```
-table.innerHTML = "";
+    table.innerHTML = "";
 
-let totalApplications = 0;
+    let totalApplications = 0;
 
-snapshot.forEach((child) => {
+    snapshot.forEach((child) => {
 
-    totalApplications++;
+        totalApplications++;
 
-    const data = child.val();
+        const data = child.val();
 
-    const row = `
-    <tr>
-        <td>${child.key}</td>
-        <td>${data.fullName || ""}</td>
-        <td>${data.course || ""}</td>
-        <td>${data.status || "Pending"}</td>
-    </tr>
-    `;
+        const row = `
+        <tr>
+            <td>${child.key}</td>
+            <td>${data.fullName || ""}</td>
+            <td>${data.course || ""}</td>
+            <td>${data.status || "Pending"}</td>
+        </tr>
+        `;
 
-    table.innerHTML += row;
-});
+        table.innerHTML += row;
+    });
 
-const statCards = document.querySelectorAll(".stat-box p");
+    const statCards = document.querySelectorAll(".stat-box p");
 
-if (statCards.length > 0) {
-    statCards[0].textContent = totalApplications;
-}
-```
+    if (statCards.length > 0) {
+        statCards[0].textContent = totalApplications;
+    }
 
 });
