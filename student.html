@@ -97,8 +97,29 @@ font-weight:bold;
 </div>
 
 <div class="card">
+
 <h3>Certificate</h3>
-<p>Certificate will become available after successful completion.</p>
+
+<p id="certificateStatus">
+Checking certificate status...
+</p>
+
+<br>
+
+<a
+id="certificateBtn"
+href="#"
+style="
+display:none;
+background:#14532d;
+color:white;
+padding:12px 20px;
+text-decoration:none;
+border-radius:6px;
+">
+View / Print Certificate
+</a>
+
 </div>
 
 </div>
@@ -137,6 +158,27 @@ student.level || "";
 document.getElementById("status").textContent =
 student.status || "Pending";
 
+if(student.certificateGenerated === true){
+
+    document.getElementById("certificateStatus")
+    .textContent =
+    "Congratulations! Your certificate is ready.";
+
+    document.getElementById("certificateBtn")
+    .style.display = "inline-block";
+
+    document.getElementById("certificateBtn")
+    .href =
+    "certificate.html?reg=" + student.regNumber;
+
+}else{
+
+    document.getElementById("certificateStatus")
+    .textContent =
+    "Certificate has not been generated yet.";
+
+}
+    
 </script>
   
 </body>
