@@ -206,11 +206,28 @@ Student results will appear here.
 
 <h2>Certificate Management</h2>
 
-<p>
-Certificate generation and verification will appear here.
-</p>
+<input
+type="text"
+id="certificateRegNo"
+placeholder="Enter Registration Number"
+style="width:100%;padding:12px;border:1px solid #ddd;border-radius:6px;">
 
-</div>
+<br><br>
+
+<input
+type="file"
+id="certificateFile"
+accept=".pdf">
+
+<br><br>
+
+<button class="upload" id="uploadCertificateBtn">
+Upload Certificate
+</button>
+
+<p style="margin-top:15px;color:#666;">
+Upload a PDF certificate for an approved student using their Registration Number.
+</p>
 
 </div>
 <script type="module" src="admin.js"></script>
