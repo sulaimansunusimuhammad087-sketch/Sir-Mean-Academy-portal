@@ -5,7 +5,6 @@ get
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 const params = new URLSearchParams(window.location.search);
-
 const regNumber = params.get("reg");
 
 if (!regNumber) {
@@ -14,13 +13,16 @@ alert("Registration Number Missing");
 
 const applicationsRef = ref(db, "applications");
 
-get(applicationsRef).then((snapshot) => {
+get(applicationsRef)
+.then((snapshot) => {
 
 ```
 if (!snapshot.exists()) {
+
     document.querySelector(".certificate").innerHTML = `
         <h1>No Applications Found</h1>
     `;
+
     return;
 }
 
@@ -34,7 +36,7 @@ snapshot.forEach((child) => {
 
         found = true;
 
-        if (!data.certificateGenerated) {
+        if (data.certificateGenerated !== true) {
 
             document.querySelector(".certificate").innerHTML = `
                 <h1>Certificate Not Available</h1>
@@ -70,7 +72,8 @@ if (!found) {
 }
 ```
 
-}).catch((error) => {
+})
+.catch((error) => {
 
 ```
 console.error(error);
