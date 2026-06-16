@@ -16,7 +16,7 @@ const applicationsRef = ref(db, "applications");
 get(applicationsRef)
 .then((snapshot) => {
 
-```
+
 if (!snapshot.exists()) {
 
     document.querySelector(".certificate").innerHTML = `
@@ -70,18 +70,18 @@ if (!found) {
         <p>No student record found.</p>
     `;
 }
-```
+
 
 })
 .catch((error) => {
 
-```
+
 console.error(error);
 
 document.querySelector(".certificate").innerHTML = `
     <h1>Error Loading Certificate</h1>
     <p>Please try again later.</p>
 `;
-```
+
 
 });
