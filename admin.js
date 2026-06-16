@@ -102,3 +102,61 @@ window.rejectApplication = async (id) => {
 
     alert("Application Rejected");
 };
+const generateBtn =
+    document.getElementById("generateCertificateBtn");
+
+if (generateBtn) {
+
+    generateBtn.addEventListener("click", async () => {
+
+        const regNumber =
+            document.getElementById("certificateRegNo").value.trim();
+
+        if (!regNumber) {
+            alert("Enter Registration Number");
+            return;
+        }
+
+        const snapshot =
+            await get(ref(db, "applications"));
+
+        let found = false;
+
+        snapshot.forEach((child) => {
+
+            const data = child.val();
+
+            if (data.regNumber === regNumber) {
+
+                found = true;
+
+                update(
+                    ref(db, "applications/" + child.key),
+                    {
+                        certificateGenerated: true,
+                        certificateDate:
+                            new Date().toLocaleDateString()
+                    }
+                );
+
+            }
+
+        });
+
+        if (found) {
+
+            alert(
+                "Certificate Generated Successfully!"
+            );
+
+        } else {
+
+            alert(
+                "Registration Number Not Found!"
+            );
+
+        }
+
+    });
+
+}
