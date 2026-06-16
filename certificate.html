@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Certificate | Sir Mean Academy</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+padding:20px;
+}
+
+.certificate{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:50px;
+border:10px solid #14532d;
+text-align:center;
+}
+
+.logo{
+width:120px;
+height:120px;
+object-fit:contain;
+margin-bottom:20px;
+}
+
+h1{
+color:#14532d;
+font-size:40px;
+margin-bottom:10px;
+}
+
+h2{
+margin-bottom:30px;
+}
+
+.student-name{
+font-size:35px;
+font-weight:bold;
+color:#0f172a;
+margin:25px 0;
+}
+
+.course{
+font-size:24px;
+margin:20px 0;
+}
+
+.details{
+margin-top:30px;
+font-size:18px;
+}
+
+button{
+margin-top:40px;
+padding:15px 25px;
+background:#14532d;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+@media print{
+button{
+display:none;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="certificate">
+
+<img src="logo.png" class="logo">
+
+<h1>SIR MEAN ACADEMY</h1>
+
+<h2>CERTIFICATE OF COMPLETION</h2>
+
+<p>This is to certify that</p>
+
+<div class="student-name" id="studentName">
+Loading...
+</div>
+
+<p>has successfully completed</p>
+
+<div class="course" id="courseName">
+Loading...
+</div>
+
+<div class="details">
+
+<p>
+Registration Number:
+<strong id="regNumber"></strong>
+</p>
+
+<p>
+Date of Completion:
+<strong id="completionDate"></strong>
+</p>
+
+</div>
+
+<button onclick="window.print()">
+Print / Save as PDF
+</button>
+
+</div>
+
+<script type="module" src="certificate.js"></script>
+
+</body>
+</html>
