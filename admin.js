@@ -54,45 +54,81 @@ window.approveApplication = async (id) => {
 
     const allApps = await get(ref(db, "applications"));
 
-    let count = 0;
+    if (!allApps.exists()) return;
 
-    if (allApps.exists()) {
-        count = Object.keys(allApps.val()).length;
-    }
+    let highestNumber = 0;
+
+    const applications = allApps.val();
+
+    Object.values(applications).forEach((app) => {
+
+        if (app.regNumber) {
+
+            const parts = app.regNumber.split("-");
+
+            const numberPart = parts[parts.length - 1];
+
+            const num = parseInt(numberPart);
+
+            if (!isNaN(num) && num > highestNumber) {
+                highestNumber = num;
+            }
+        }
+
+    });
 
     const snap = await get(ref(db, "applications/" + id));
 
-    if (!snap.exists()) {
-        return;
-    }
+    if (!snap.exists()) return;
 
     const data = snap.val();
+
+    if (data.regNumber) {
+
+        alert(
+            "Student already has Registration Number: " +
+            data.regNumber
+        );
+
+        return;
+    }
 
     let prefix = "SMA";
 
     if (data.course === "Data Analysis with Microsoft Excel") {
         prefix = "SMA-EXCEL";
-    } else if (data.course === "SQL for Data Analysis") {
+    }
+    else if (data.course === "SQL for Data Analysis") {
         prefix = "SMA-SQL";
-    } else if (data.course === "Power BI Fundamentals") {
+    }
+    else if (data.course === "Power BI Fundamentals") {
         prefix = "SMA-PBI";
-    } else if (data.course === "Python for Data Analysis") {
+    }
+    else if (data.course === "Python for Data Analysis") {
         prefix = "SMA-PYT";
     }
 
-    const regNumber =
-        prefix + "-" + String(count).padStart(5, "0");
+    const nextNumber = highestNumber + 1;
 
-    await update(ref(db, "applications/" + id), {
-        status: "Approved",
-        regNumber: regNumber
-    });
+    const regNumber =
+        prefix + "-" + String(nextNumber).padStart(5, "0");
+
+    await update(
+        ref(db, "applications/" + id),
+        {
+            status: "Approved",
+            regNumber: regNumber
+        }
+    );
 
     alert(
         "Application Approved!\n\nRegistration Number: " +
         regNumber
     );
+
 };
+
+    
 
 window.rejectApplication = async (id) => {
 
