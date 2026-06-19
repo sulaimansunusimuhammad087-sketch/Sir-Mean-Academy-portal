@@ -6,6 +6,24 @@ import {
     get
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
+import { auth } from "./firebase-config.js";
+
+import {
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.href =
+"admin-login.html";
+
+}
+
+});
+
 const table = document.getElementById("applicationsTable");
 
 onValue(ref(db, "applications"), (snapshot) => {
@@ -196,3 +214,19 @@ if (generateBtn) {
     });
 
 }
+
+import {
+signOut
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click",async()=>{
+
+await signOut(auth);
+
+window.location.href =
+"admin-login.html";
+
+});
