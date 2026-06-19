@@ -1,12 +1,10 @@
-import { db } from "./firebase-config.js";
+import { db, auth } from "./firebase-config.js";
 import {
     ref,
     onValue,
     update,
     get
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-import { auth } from "./firebase-config.js";
 
 import {
 onAuthStateChanged
@@ -220,9 +218,12 @@ signOut
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-document
-.getElementById("logoutBtn")
-.addEventListener("click",async()=>{
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+if(logoutBtn){
+
+logoutBtn.addEventListener("click",async()=>{
 
 await signOut(auth);
 
@@ -230,3 +231,5 @@ window.location.href =
 "admin-login.html";
 
 });
+
+}
